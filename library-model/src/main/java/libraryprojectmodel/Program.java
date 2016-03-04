@@ -3,6 +3,9 @@ package libraryprojectmodel;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Property;
+
+import java.util.Properties;
 
 /**
  * Created by aldm on 16.02.2016.

@@ -43,4 +43,15 @@ public class Credential {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    private String eMail;
+
+    @Basic
+    public String geteMail() {
+        return eMail;
+    }
+
+    public void seteMail(String eMail) {
+        this.eMail = eMail;
+    }
 }

@@ -1,6 +1,7 @@
 package libraryprojectmodel;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by aldm on 10.02.2016.
@@ -27,6 +28,17 @@ public class Card {
 
     public void setNumber(int number) {
         this.number = number;
+    }
+
+    private Credential credential;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    public Credential getCredential() {
+        return credential;
+    }
+
+    public void setCredential(Credential credential) {
+        this.credential = credential;
     }
 
     public Card() {

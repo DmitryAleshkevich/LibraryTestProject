@@ -11,13 +11,11 @@
     <property name="connection.password">fooz7ieTh3</property>
     <!-- DB schema will be updated if needed -->
     <property name="hbm2ddl.auto">create</property>
-    <mapping class="libraryprojectmodel.Client"/>
     <mapping class="libraryprojectmodel.Library"/>
-    <mapping class="libraryprojectmodel.Account"/>
     <mapping class="libraryprojectmodel.Book"/>
     <mapping class="libraryprojectmodel.Author"/>
     <mapping class="libraryprojectmodel.Card"/>
     <mapping class="libraryprojectmodel.Credential"/>
-    <mapping class="libraryprojectmodel.Service"/>
+    <mapping class="libraryprojectmodel.Registry"/>
   </session-factory>
 </hibernate-configuration>

@@ -54,17 +54,6 @@ public class Library {
         return getId();
     }
 
-    private Account account;
-
-    @OneToOne(optional = false,fetch = FetchType.LAZY)
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
-    }
-
     private Set<Card> cards;
 
     @OneToMany(fetch = FetchType.LAZY)
@@ -87,25 +76,4 @@ public class Library {
         this.books = books;
     }
 
-    private Set<Service> services;
-
-    @OneToMany(fetch = FetchType.LAZY)
-    public Set<Service> getServices() {
-        return services;
-    }
-
-    public void setServices(Set<Service> services) {
-        this.services = services;
-    }
-
-    private Set<Credential> credentials;
-
-    @OneToMany(fetch = FetchType.LAZY)
-    public Set<Credential> getCredentials() {
-        return credentials;
-    }
-
-    public void setCredentials(Set<Credential> credentials) {
-        this.credentials = credentials;
-    }
 }
