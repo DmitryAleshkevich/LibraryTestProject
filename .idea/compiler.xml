@@ -23,14 +23,8 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="DAO" />
-        <module name="library-Services" />
-      </profile>
-      <profile default="false" name="Annotation profile for library-model" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="true" />
         <module name="library-model" />
+        <module name="library-Services" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
