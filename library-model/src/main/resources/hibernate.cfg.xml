@@ -16,6 +16,5 @@
     <mapping class="libraryprojectmodel.Author"/>
     <mapping class="libraryprojectmodel.Card"/>
     <mapping class="libraryprojectmodel.Credential"/>
-    <mapping class="libraryprojectmodel.Registry"/>
   </session-factory>
 </hibernate-configuration>

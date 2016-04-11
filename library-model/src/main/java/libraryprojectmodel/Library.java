@@ -1,9 +1,11 @@
 package libraryprojectmodel;
 
+import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Set;
 
 /**
@@ -22,17 +24,6 @@ public class Library {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    private String name;
-
-    @Basic
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Library() {
@@ -54,26 +45,36 @@ public class Library {
         return getId();
     }
 
-    private Set<Card> cards;
+    private Book book;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    public Set<Card> getCards() {
-        return cards;
+    @OneToOne(fetch = FetchType.LAZY)
+    public Book getBook() {
+        return book;
     }
 
-    public void setCards(Set<Card> cards) {
-        this.cards = cards;
+    public void setBook(Book book) {
+        this.book = book;
     }
 
-    private Set<Book> books;
+    private Card card;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    public Set<Book> getBooks() {
-        return books;
+    @OneToOne
+    public Card getCard() {
+        return card;
     }
 
-    public void setBooks(Set<Book> books) {
-        this.books = books;
+    public void setCard(Card card) {
+        this.card = card;
     }
 
+    private Date returnDate;
+
+    @Temporal(TemporalType.DATE)
+    public Date getReturnDate() {
+        return returnDate;
+    }
+
+    public void setReturnDate(Date returnDate) {
+        this.returnDate = returnDate;
+    }
 }
