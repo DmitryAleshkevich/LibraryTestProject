@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/DAO/DAO.iml" filepath="$PROJECT_DIR$/DAO/DAO.iml" />
       <module fileurl="file://$PROJECT_DIR$/LibraryTestProject.iml" filepath="$PROJECT_DIR$/LibraryTestProject.iml" />
       <module fileurl="file://$PROJECT_DIR$/library-Services/library-Services.iml" filepath="$PROJECT_DIR$/library-Services/library-Services.iml" />
       <module fileurl="file://$PROJECT_DIR$/library-model/library-model.iml" filepath="$PROJECT_DIR$/library-model/library-model.iml" />

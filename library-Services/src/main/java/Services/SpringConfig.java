@@ -1,3 +1,7 @@
+package Services;
+
+import libraryDAO.LibraryRepository;
+import libraryprojectmodel.Library;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -7,15 +11,16 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+
 import javax.sql.DataSource;
 
 /**
  * Created by aldm on 24.02.2016.
  */
 @Configuration
+@EnableJpaRepositories(basePackageClasses = {LibraryRepository.class})
 @EnableTransactionManagement
-@ComponentScan({"libraryDAO","libraryservices"})
-@EnableJpaRepositories("libraryDAO")
+@ComponentScan(basePackageClasses = {LibraryRepository.class, Library.class, LibraryService.class})
 public class SpringConfig {
 
     private static final String PROP_DATABASE_DRIVER = "hibernate.connection.driver_class";
