@@ -2,6 +2,8 @@ package Services;
 
 import libraryDAO.*;
 import libraryprojectmodel.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +20,8 @@ import java.util.stream.Collectors;
 @Service
 @Transactional
 public class LibraryServiceImpl implements LibraryService {
+
+    private static final Logger logger = LogManager.getLogger(LibraryServiceImpl.class);
 
     @Autowired
     private CredentialRepository credentialRepository;
@@ -43,6 +47,10 @@ public class LibraryServiceImpl implements LibraryService {
             credential.setLogin(login);
             credential.setPassword(password);
             credentialRepository.saveAndFlush(credential);
+        }
+        else
+        {
+            logger.info("User with login {} and password {} is already registered!",login,password);
         }
     }
 
@@ -70,13 +78,13 @@ public class LibraryServiceImpl implements LibraryService {
         return books;
     }
 
-    private Set<Book> findBook(String title, String author)
-    {
+    private Set<Book> findBook(String title, String author) {
         Set<Author> authors = authorRepository.findByNameLike(author);
         if (!authors.isEmpty())
         {
             return bookRepository.findByTitleLikeAndAuthorsIn(title, authors);
         }
+        logger.info("Couldn`t find author {}!",author);
         return new HashSet<>();
     }
 
@@ -103,6 +111,7 @@ public class LibraryServiceImpl implements LibraryService {
                 return libraryRepository.findByCard(card).stream().map(Library::getBook).collect(Collectors.toSet());
             }
         }
+        logger.info("Couldn`t find credential or card for login {} and password {}!",login,password);
         return new HashSet<>();
     }
 }

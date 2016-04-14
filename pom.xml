@@ -21,6 +21,7 @@
         <hibernate.entitymanager.version>5.1.0.Final</hibernate.entitymanager.version>
         <junit.version>4.12</junit.version>
         <spring.test.version>4.2.5.RELEASE</spring.test.version>
+        <log4j.version>2.5</log4j.version>
     </properties>
 
     <dependencies>
@@ -58,6 +59,16 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <version>${spring.test.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j.version}</version>
         </dependency>
     </dependencies>
 
