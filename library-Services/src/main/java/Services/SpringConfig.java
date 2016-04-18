@@ -1,5 +1,6 @@
 package Services;
 
+import WebRestService.AppController;
 import libraryDAO.LibraryRepository;
 import libraryprojectmodel.Library;
 import org.hibernate.jpa.HibernatePersistenceProvider;
@@ -11,6 +12,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.sql.DataSource;
 
@@ -20,7 +22,8 @@ import javax.sql.DataSource;
 @Configuration
 @EnableJpaRepositories(basePackageClasses = {LibraryRepository.class})
 @EnableTransactionManagement
-@ComponentScan(basePackageClasses = {LibraryRepository.class, Library.class, LibraryService.class})
+@ComponentScan(basePackageClasses = {LibraryRepository.class, Library.class, LibraryService.class, AppController.class})
+@EnableWebMvc
 public class SpringConfig {
 
     private static final String PROP_DATABASE_DRIVER = "hibernate.connection.driver_class";

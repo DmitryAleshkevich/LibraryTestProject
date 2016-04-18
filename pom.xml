@@ -22,6 +22,9 @@
         <junit.version>4.12</junit.version>
         <spring.test.version>4.2.5.RELEASE</spring.test.version>
         <log4j.version>2.5</log4j.version>
+        <spring.webmvc.version>4.2.5.RELEASE</spring.webmvc.version>
+        <javax.servlet.version>3.1.0</javax.servlet.version>
+        <jackson.version>2.7.3</jackson.version>
     </properties>
 
     <dependencies>
@@ -70,6 +73,26 @@
             <artifactId>log4j-core</artifactId>
             <version>${log4j.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.webmvc.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${javax.servlet.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-web</artifactId>
+            <version>${log4j.version}</version>
+            <scope>runtime</scope>
+        </dependency>
     </dependencies>
-
 </project>

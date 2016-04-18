@@ -27,6 +27,6 @@ public interface LibraryRepository extends JpaRepository<Library,Integer> {
 
     @Modifying(clearAutomatically = true)
     @Transactional
-    @Query("update Library library set library.returnDate = :returnDate, library.card = :card where library in :libraries")
+    @Query("update Library library set library.returnDate = :returnDate, library.card = :card where library in :libraries and library.card is null")
     void updateBookStoresDateReturn(@Param("libraries") Set<Library> libraries, @Param("returnDate") Date returnDate, @Param("card") Card card);
 }
