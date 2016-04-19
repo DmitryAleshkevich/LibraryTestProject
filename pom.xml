@@ -25,6 +25,7 @@
         <spring.webmvc.version>4.2.5.RELEASE</spring.webmvc.version>
         <javax.servlet.version>3.1.0</javax.servlet.version>
         <jackson.version>2.7.3</jackson.version>
+        <apache.httpclient.version>4.5.2</apache.httpclient.version>
     </properties>
 
     <dependencies>
@@ -93,6 +94,26 @@
             <artifactId>log4j-web</artifactId>
             <version>${log4j.version}</version>
             <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.webmvc.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>${apache.httpclient.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson.version}</version>
         </dependency>
     </dependencies>
 </project>
