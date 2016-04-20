@@ -4,6 +4,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import libraryprojectmodel.Author;
 import libraryprojectmodel.Book;
+import libraryprojectmodel.Card;
+import libraryprojectmodel.Library;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +22,9 @@ import org.springframework.web.context.WebApplicationContext;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -50,6 +54,10 @@ public class AppControllerTest {
 
     private String jsonBookResult;
 
+    private String jsonRegistration;
+
+    private String jsonRent;
+
     @Resource
     private TestContentProducer testContentProducer;
 
@@ -63,6 +71,8 @@ public class AppControllerTest {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         this.jsonBook = ow.writeValueAsString(books);
         this.jsonBookResult = "[{\"id\":1,\"title\":\"myBook\",\"releaseYear\":1461069936812,\"authors\":[{\"id\":1,\"name\":\"Unknown\",\"books\":null}]}]";
+        this.jsonRegistration = "{\"email\":\"dmitryaleshkevich@gmail.com\",\"login\":\"aldm\",\"password\":\"fhvfutljy\"}";
+        this.jsonRent = "{\"books\":" + this.jsonBookResult + ",\"date\":1461069936812,\"login\":\"aldm\",\"password\":\"fhvfutljy\"}";
     }
 
     @Test
@@ -83,27 +93,28 @@ public class AppControllerTest {
     public void getBooks() throws Exception {
         Author author = testContentProducer.getAuthor();
         Book book = testContentProducer.getBook(author);
-        MvcResult result = this.mockMvc.perform(post("/getbooks").contentType(MediaType.APPLICATION_JSON).content(jsonBook)).andDo(print()).andExpect(status().isOk()).andReturn();
+        MvcResult result = this.mockMvc.perform(post("/getbooks").contentType(MediaType.APPLICATION_JSON).content(this.jsonBook)).andDo(print()).andExpect(status().isOk()).andReturn();
         assertEquals(result.getResponse().getContentAsString(),jsonBookResult);
     }
 
-    // incorrect REDO.
     @Test
     public void registerUser() throws Exception {
-        /*this.mockServer.expect(requestTo("/register?email=dmitryaleshkevich@gmail.com&login=aldm&password=fhvfutljy")).andRespond(withSuccess(this.successJsonTrue, MediaType.APPLICATION_JSON));
-        String isRegistered = this.restTemplate.getForObject("/register?email=dmitryaleshkevich@gmail.com&login=aldm&password=fhvfutljy",String.class);
-        assertEquals(isRegistered,successJsonTrue);
-        this.mockServer.verify();*/
+        MvcResult result = this.mockMvc.perform(post("/register").contentType(MediaType.APPLICATION_JSON).content(this.jsonRegistration)).andDo(print()).andExpect(status().isOk()).andReturn();
+        assertEquals(result.getResponse().getContentAsString(),successJsonTrue);
     }
 
     @Test
     public void rentBooks() throws Exception {
-
-    }
-
-    @Test
-    public void pushBooks() throws Exception {
-
+        Author author = testContentProducer.getAuthor();
+        Book book = testContentProducer.getBook(author);
+        Set<Book> books = new HashSet<>();
+        books.add(book);
+        Card card = testContentProducer.getNewCard();
+        Library library = testContentProducer.getLibrary(book);
+        MvcResult result = this.mockMvc.perform(post("/register").contentType(MediaType.APPLICATION_JSON).content(this.jsonRegistration)).andDo(print()).andExpect(status().isOk()).andReturn();
+        MvcResult res = this.mockMvc.perform(post("/rentbooks").contentType(MediaType.APPLICATION_JSON).content(this.jsonRent)).andDo(print()).andExpect(status().isOk()).andReturn();
+        assertEquals(res.getResponse().getContentAsString(),successJsonTrue);
+        testContentProducer.DeleteAll(author, book, card, library);
     }
 
 }

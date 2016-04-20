@@ -38,21 +38,18 @@ public class AppController {
         return libraryService.findBooks(query);
     }
 
-    // incorrect - redo
     @RequestMapping(path = "/register",method = RequestMethod.POST)
-    public Map<String, Boolean> registerUser(@RequestParam(value = "email") String email, @RequestParam(value = "login") String login, @RequestParam(value = "password") String password)
+    public Map<String, Boolean> registerUser(@RequestBody String email, @RequestBody String login, @RequestBody String password)
     {
         libraryService.register(email, login, password);
         final boolean isRegistered = libraryService.isRegistered(login, password);
         return Collections.singletonMap("success", isRegistered);
     }
 
-    // incorrect - redo
     @RequestMapping(path = "/rentbooks",method = RequestMethod.POST)
-    public Map<String, Boolean> rentBooks(@RequestBody Set<Book> books, @RequestParam(value = "returnDate") Date date,
-                                          @RequestParam(value = "login") String login, @RequestParam(value = "password") String password)
+    public Map<String, Boolean> rentBooks(@RequestBody RentRequest rentRequest)
     {
-        libraryService.rentBooks(books, date, login, password);
+        libraryService.rentBooks(rentRequest.getBooks(), rentRequest.getDate(), rentRequest.getLogin(), rentRequest.getPassword());
         return Collections.singletonMap("success", true);
     }
 
