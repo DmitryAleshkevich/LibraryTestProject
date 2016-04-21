@@ -10,8 +10,7 @@ import java.util.Date;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * Created by aldm on 14.04.2016.
+/** * Created by aldm on 14.04.2016.
  */
 @RestController
 public class AppController {
