@@ -2,10 +2,10 @@ import Services.SpringConfig;
 import Services.TestContentProducer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
-import libraryprojectmodel.Author;
-import libraryprojectmodel.Book;
-import libraryprojectmodel.Card;
-import libraryprojectmodel.Library;
+import Model.Author;
+import Model.Book;
+import Model.Card;
+import Model.Library;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -46,17 +46,21 @@ public class AppControllerTest {
 
     private MockMvc mockMvc;
 
-    private String successJsonTrue;
+    private static final String successJsonTrue = "{\"success\":true}";
 
-    private String successJsonFalse;
+    private static final String successJsonFalse = "{\"success\":false}";
 
     private String jsonBook;
 
-    private String jsonBookResult;
+    private static final String jsonBookResult = "[{\"id\":1,\"title\":\"myBook\",\"releaseYear\":1461069936812,\"authors\":[{\"id\":1,\"name\":\"Unknown\",\"books\":null}]}]";
 
-    private String jsonRegistration;
+    private static final String jsonRegistration = "{\"email\":\"dmitryaleshkevich@gmail.com\",\"login\":\"aldm\",\"password\":\"fhvfutljy\"}";
 
-    private String jsonRent;
+    private static final String jsonRent;
+
+    static {
+        jsonRent = "{\"books\":" + jsonBookResult + ",\"date\":1461069936812,\"login\":\"aldm\",\"password\":\"fhvfutljy\"}";
+    }
 
     @Resource
     private TestContentProducer testContentProducer;
@@ -64,15 +68,10 @@ public class AppControllerTest {
     @Before
     public void setUp() throws Exception {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
-        this.successJsonTrue = "{\"success\":true}";
-        this.successJsonFalse = "{\"success\":false}";
         Map<String,String> books = new HashMap<>();
         books.put("myBook","Unknown");
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         this.jsonBook = ow.writeValueAsString(books);
-        this.jsonBookResult = "[{\"id\":1,\"title\":\"myBook\",\"releaseYear\":1461069936812,\"authors\":[{\"id\":1,\"name\":\"Unknown\",\"books\":null}]}]";
-        this.jsonRegistration = "{\"email\":\"dmitryaleshkevich@gmail.com\",\"login\":\"aldm\",\"password\":\"fhvfutljy\"}";
-        this.jsonRent = "{\"books\":" + this.jsonBookResult + ",\"date\":1461069936812,\"login\":\"aldm\",\"password\":\"fhvfutljy\"}";
     }
 
     @Test
@@ -99,7 +98,7 @@ public class AppControllerTest {
 
     @Test
     public void registerUser() throws Exception {
-        MvcResult result = this.mockMvc.perform(post("/register").contentType(MediaType.APPLICATION_JSON).content(this.jsonRegistration)).andDo(print()).andExpect(status().isOk()).andReturn();
+        MvcResult result = this.mockMvc.perform(post("/register").contentType(MediaType.APPLICATION_JSON).content(jsonRegistration)).andDo(print()).andExpect(status().isOk()).andReturn();
         assertEquals(result.getResponse().getContentAsString(),successJsonTrue);
     }
 
@@ -111,8 +110,8 @@ public class AppControllerTest {
         books.add(book);
         Card card = testContentProducer.getNewCard();
         Library library = testContentProducer.getLibrary(book);
-        MvcResult result = this.mockMvc.perform(post("/register").contentType(MediaType.APPLICATION_JSON).content(this.jsonRegistration)).andDo(print()).andExpect(status().isOk()).andReturn();
-        MvcResult res = this.mockMvc.perform(post("/rentbooks").contentType(MediaType.APPLICATION_JSON).content(this.jsonRent)).andDo(print()).andExpect(status().isOk()).andReturn();
+        MvcResult result = this.mockMvc.perform(post("/register").contentType(MediaType.APPLICATION_JSON).content(jsonRegistration)).andDo(print()).andExpect(status().isOk()).andReturn();
+        MvcResult res = this.mockMvc.perform(post("/rentbooks").contentType(MediaType.APPLICATION_JSON).content(jsonRent)).andDo(print()).andExpect(status().isOk()).andReturn();
         assertEquals(res.getResponse().getContentAsString(),successJsonTrue);
         testContentProducer.DeleteAll(author, book, card, library);
     }

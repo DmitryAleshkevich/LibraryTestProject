@@ -1,8 +1,8 @@
 package Services;
 
-import WebRestService.AppController;
-import libraryDAO.LibraryRepository;
-import libraryprojectmodel.Library;
+import Rest.AppController;
+import DAO.LibraryRepository;
+import Model.Library;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -30,7 +30,7 @@ public class SpringConfig {
     private static final String PROP_DATABASE_PASSWORD = "hibernate.connection.password";
     private static final String PROP_DATABASE_URL = "hibernate.connection.url";
     private static final String PROP_DATABASE_USERNAME = "hibernate.connection.username";
-    private static final String PROP_ENTITYMANAGER_PACKAGES_TO_SCAN = "libraryprojectmodel";
+    private static final String PROP_ENTITYMANAGER_PACKAGES_TO_SCAN = "Model";
 
     private org.hibernate.cfg.Configuration configuration = new org.hibernate.cfg.Configuration().configure();
 

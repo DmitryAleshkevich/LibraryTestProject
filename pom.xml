@@ -21,7 +21,6 @@
         <spring-data-jpa.version>1.9.2.RELEASE</spring-data-jpa.version>
         <spring.test.version>4.2.5.RELEASE</spring.test.version>
         <spring.webmvc.version>4.2.5.RELEASE</spring.webmvc.version>
-        <spring.sequrity.version>4.0.4.RELEASE</spring.sequrity.version>
         <junit.version>4.12</junit.version>
         <log4j.version>2.5</log4j.version>
         <slf4j.version>1.7.21</slf4j.version>
@@ -132,21 +131,6 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-jcl</artifactId>
             <version>${log4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-web</artifactId>
-            <version>${spring.sequrity.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-config</artifactId>
-            <version>${spring.sequrity.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-core</artifactId>
-            <version>${spring.sequrity.version}</version>
         </dependency>
     </dependencies>
 </project>

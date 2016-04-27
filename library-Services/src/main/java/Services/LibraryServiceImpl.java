@@ -1,7 +1,7 @@
 package Services;
 
-import libraryDAO.*;
-import libraryprojectmodel.*;
+import DAO.*;
+import Model.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
  */
 @Service
 @Transactional
-public class LibraryServiceImpl implements LibraryService {
+class LibraryServiceImpl implements LibraryService {
 
     private static final Logger logger = LogManager.getLogger(LibraryServiceImpl.class);
 
@@ -43,7 +43,7 @@ public class LibraryServiceImpl implements LibraryService {
         if (!isRegistered(login,password))
         {
             Credential credential = new Credential();
-            credential.seteMail(eMail);
+            credential.setEmail(eMail);
             credential.setLogin(login);
             credential.setPassword(password);
             credentialRepository.saveAndFlush(credential);
@@ -90,7 +90,7 @@ public class LibraryServiceImpl implements LibraryService {
 
     @Override
     public void rentBooks(Set<Book> books, Date returnDate, String login, String password) {
-        final Credential oneByLoginAndPassword = credentialRepository.findOneByLoginAndPassword(login, password);
+        Credential oneByLoginAndPassword = credentialRepository.findOneByLoginAndPassword(login, password);
         Card card = cardRepository.findOneByCredential(oneByLoginAndPassword);
         libraryRepository.updateBookStoresDateReturn(libraryRepository.findByBookIn(books), returnDate, card);
     }

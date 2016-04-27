@@ -1,9 +1,8 @@
 import Services.LibraryService;
-import Services.LibraryServiceImpl;
 import Services.SpringConfig;
 import Services.TestContentProducer;
-import libraryDAO.*;
-import libraryprojectmodel.*;
+import DAO.*;
+import Model.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

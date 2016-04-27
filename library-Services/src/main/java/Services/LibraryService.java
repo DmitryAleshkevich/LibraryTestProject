@@ -1,7 +1,6 @@
 package Services;
 
-import libraryprojectmodel.Book;
-import libraryprojectmodel.Card;
+import Model.Book;
 
 import java.util.Date;
 import java.util.Map;
