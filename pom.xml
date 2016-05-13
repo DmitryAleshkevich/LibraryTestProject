@@ -8,33 +8,40 @@
     <artifactId>LibraryTestProject</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>library-model</module>
-        <module>library-Services</module>
-    </modules>
 
     <properties>
         <hibernate.version>5.1.0.Final</hibernate.version>
-        <hibernate.entitymanager.version>5.1.0.Final</hibernate.entitymanager.version>
-        <mysqlconnector.version>5.1.38</mysqlconnector.version>
-        <spring-core.version>4.2.4.RELEASE</spring-core.version>
         <spring-data-jpa.version>1.9.2.RELEASE</spring-data-jpa.version>
         <spring.test.version>4.2.5.RELEASE</spring.test.version>
         <spring.webmvc.version>4.2.5.RELEASE</spring.webmvc.version>
-        <junit.version>4.12</junit.version>
         <log4j.version>2.5</log4j.version>
         <slf4j.version>1.7.21</slf4j.version>
         <slf4j.adapter.version>2.5</slf4j.adapter.version>
-        <javax.servlet.version>3.1.0</javax.servlet.version>
         <jackson.version>2.7.3</jackson.version>
         <apache.httpclient.version>4.5.2</apache.httpclient.version>
+        <java.version>1.8</java.version>
+        <aspectj.version>1.8.9</aspectj.version>
     </properties>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.3.5.RELEASE</version>
+    </parent>
 
     <dependencies>
         <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>${mysqlconnector.version}</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -44,12 +51,11 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>${hibernate.entitymanager.version}</version>
+            <version>${hibernate.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>${spring-core.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.data</groupId>
@@ -67,11 +73,6 @@
             <version>${spring.webmvc.version}</version>
         </dependency>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
             <version>${log4j.version}</version>
@@ -82,9 +83,12 @@
             <version>${log4j.version}</version>
         </dependency>
         <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+        <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>${javax.servlet.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -133,4 +137,14 @@
             <version>${log4j.version}</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
