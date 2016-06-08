@@ -1,6 +1,7 @@
-package Rest;
+package Initializers;
 
-import Utils.SpringConfig;
+import Config.SecurityConfig;
+import Config.SpringConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 /**
@@ -10,12 +11,12 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[] { SpringConfig.class };
+        return new Class[] { SpringConfig.class, SecurityConfig.class };
     }
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class[] { SpringConfig.class };
+        return new Class[] { SpringConfig.class, SecurityConfig.class };
     }
 
     @Override

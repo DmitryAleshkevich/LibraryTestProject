@@ -1,12 +1,15 @@
-package Utils;
+package Config;
 
 import DAO.LibraryRepository;
+import Initializers.AppInitializer;
 import Model.Library;
 import Rest.AppController;
 import Services.LibraryService;
+import Utils.TestContentProducer;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -26,9 +29,9 @@ import javax.sql.DataSource;
 @EnableAutoConfiguration
 @EnableJpaRepositories(basePackageClasses = {LibraryRepository.class})
 @EnableTransactionManagement
-@ComponentScan(basePackageClasses = {LibraryRepository.class, Library.class, LibraryService.class, AppController.class, TestContentProducer.class})
+@ComponentScan(basePackageClasses = {LibraryRepository.class, Library.class, LibraryService.class, AppController.class, TestContentProducer.class, SecurityConfig.class, AppInitializer.class})
 @EnableWebMvc
-public class SpringConfig {
+public class SpringConfig extends WebMvcAutoConfiguration {
 
     private static final String PROP_DATABASE_DRIVER = "hibernate.connection.driver_class";
     private static final String PROP_DATABASE_PASSWORD = "hibernate.connection.password";

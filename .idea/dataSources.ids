@@ -8,6 +8,144 @@
     <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
     <database-model serializer="dbm" rdbms="MYSQL" format-version="2.5">
       <schema id="1" name="library"/>
+      <table id="2" parent="1" name="author"/>
+      <table id="3" parent="1" name="book"/>
+      <table id="4" parent="1" name="book_author"/>
+      <table id="5" parent="1" name="card"/>
+      <table id="6" parent="1" name="credential"/>
+      <table id="7" parent="1" name="library"/>
+      <column id="8" parent="2" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="9" parent="2" name="name">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <key id="10" parent="2" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="11" parent="3" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="12" parent="3" name="releaseYear">
+        <data-type>date</data-type>
+      </column>
+      <column id="13" parent="3" name="title">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <key id="14" parent="3" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="15" parent="4" name="books_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="16" parent="4" name="authors_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <index id="17" parent="4" name="FKimn1h9jx7v2q8d7w1s45dpsd2">
+        <columns>books_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="18" parent="4" name="FKt42qaxhbq87yfijncjfrs5ukc">
+        <columns>authors_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <foreign-key id="19" parent="4" name="FKimn1h9jx7v2q8d7w1s45dpsd2">
+        <columns>books_id</columns>
+        <ref-key>~.book.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="20" parent="4" name="FKt42qaxhbq87yfijncjfrs5ukc">
+        <columns>authors_id</columns>
+        <ref-key>~.author.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="21" parent="5" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="22" parent="5" name="number">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="23" parent="5" name="credential_id">
+        <data-type>int(11)</data-type>
+      </column>
+      <index id="24" parent="5" name="FKn0ib80it8c97uh5rcnjwbk8le">
+        <columns>credential_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="25" parent="5" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="26" parent="5" name="FKn0ib80it8c97uh5rcnjwbk8le">
+        <columns>credential_id</columns>
+        <ref-key>~.credential.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="27" parent="6" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="28" parent="6" name="email">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="29" parent="6" name="login">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="30" parent="6" name="password">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <key id="31" parent="6" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="32" parent="7" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="33" parent="7" name="returnDate">
+        <data-type>date</data-type>
+      </column>
+      <column id="34" parent="7" name="book_id">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="35" parent="7" name="card_id">
+        <data-type>int(11)</data-type>
+      </column>
+      <index id="36" parent="7" name="FKcmtx749ihhhm5lfj8vu1qapcp">
+        <columns>card_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="37" parent="7" name="FKshgoayevl08hr82j2hbp83g6p">
+        <columns>book_id</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="38" parent="7" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="39" parent="7" name="FKcmtx749ihhhm5lfj8vu1qapcp">
+        <columns>card_id</columns>
+        <ref-key>~.card.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="40" parent="7" name="FKshgoayevl08hr82j2hbp83g6p">
+        <columns>book_id</columns>
+        <ref-key>~.book.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
     </database-model>
   </data-source>
 </component>
