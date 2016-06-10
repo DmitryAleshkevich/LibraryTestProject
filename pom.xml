@@ -22,7 +22,6 @@
         <java.version>1.8</java.version>
         <aspectj.version>1.8.9</aspectj.version>
         <spring.security.version>4.1.0.RELEASE</spring.security.version>
-        <jquery.version>2.2.4</jquery.version>
     </properties>
 
     <parent>
@@ -147,11 +146,6 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
             <version>${spring.security.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.webjars.bower</groupId>
-            <artifactId>jquery</artifactId>
-            <version>${jquery.version}</version>
         </dependency>
     </dependencies>
 
