@@ -61,8 +61,9 @@ class LibraryServiceImpl implements LibraryService {
     }
 
     @Override
+    @Deprecated
     public void login(String login, String password) {
-        /* return when decide how to store connections */
+        /* done with Spring Security */
     }
 
     @Override
@@ -78,13 +79,13 @@ class LibraryServiceImpl implements LibraryService {
         return books;
     }
 
-    private Set<Book> findBook(String title, String author) {
+    public Set<Book> findBook(String title, String author) {
         Set<Author> authors = authorRepository.findByNameLike(author);
         if (!authors.isEmpty())
         {
             return bookRepository.findByTitleLikeAndAuthorsIn(title, authors);
         }
-        logger.info("Couldn`t find author {}!",author);
+        logger.warn("Couldn`t find author {}!",author);
         return new HashSet<>();
     }
 
@@ -92,7 +93,12 @@ class LibraryServiceImpl implements LibraryService {
     public void rentBooks(Set<Book> books, Date returnDate, String login, String password) {
         Credential oneByLoginAndPassword = credentialRepository.findOneByLoginAndPassword(login, password);
         Card card = cardRepository.findOneByCredential(oneByLoginAndPassword);
-        libraryRepository.updateBookStoresDateReturn(libraryRepository.findByBookIn(books), returnDate, card);
+        final Set<Library> librarySet = libraryRepository.findByBookIn(books);
+        if (!librarySet.isEmpty()) {
+            libraryRepository.updateBookStoresDateReturn(librarySet, returnDate, card);
+            return;
+        }
+        logger.warn("No books in library!");
     }
 
     @Override

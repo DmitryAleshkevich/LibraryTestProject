@@ -58,8 +58,12 @@ public class AppControllerTest {
 
     private static final String jsonRent;
 
+    private static final String newjsonBookResult = "[{\"id\":1,\"title\":\"myBook\",\"releaseYear\":\"2016-06-14T21:00:00.000Z\",\"authors\":\"Unknown\"}]";
+
+    //{"books":[{"Id":"3","Title":"Hyperion","Authors":"Simmons","Release Date":"1966-06-08"}],"date":"2016-06-14T21:00:00.000Z","login":"aldm","password":"123"}
+
     static {
-        jsonRent = "{\"books\":" + jsonBookResult + ",\"date\":1461069936812,\"login\":\"aldm\",\"password\":\"fhvfutljy\"}";
+        jsonRent = "{\"books\":" + newjsonBookResult + ",\"date\":\"2016-06-14T21:00:00.000Z\",\"login\":\"aldm\",\"password\":\"fhvfutljy\"}";
     }
 
     @Resource

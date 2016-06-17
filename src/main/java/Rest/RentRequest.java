@@ -9,12 +9,12 @@ import java.util.Set;
  * Created by aldm on 20.04.2016.
  */
 class RentRequest {
-    private Set<Book> books;
+    private Set<BookResponse> books;
     private Date date;
     private String login;
     private String password;
 
-    Set<Book> getBooks() {
+    Set<BookResponse> getBooks() {
         return books;
     }
 
@@ -30,7 +30,7 @@ class RentRequest {
         return password;
     }
 
-    public void setBooks(Set<Book> books) {
+    public void setBooks(Set<BookResponse> books) {
         this.books = books;
     }
 

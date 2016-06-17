@@ -10,7 +10,7 @@
     <property name="connection.username">root</property>
     <property name="connection.password">fooz7ieTh3</property>
     <!-- DB schema will be updated if needed -->
-    <property name="hbm2ddl.auto">create</property>
+    <property name="hbm2ddl.auto">validate</property>
     <mapping class="Model.Library"/>
     <mapping class="Model.Book"/>
     <mapping class="Model.Author"/>
