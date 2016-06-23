@@ -1,7 +1,5 @@
 package Rest;
 
-import Model.Book;
-
 import java.util.Date;
 import java.util.Set;
 

@@ -15,6 +15,9 @@ public class Author {
     private String name;
     private Collection<Book> books;
 
+    public Author() {
+    }
+
     @Id
     @GeneratedValue(generator="increment")
     @GenericGenerator(name="increment", strategy = "increment")
@@ -43,13 +46,14 @@ public class Author {
         this.books = books;
     }
 
-    public Author() {
-    }
-
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Author)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Author)) {
+            return false;
+        }
         Author author = (Author) o;
         return getId() == author.getId();
     }

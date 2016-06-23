@@ -41,7 +41,7 @@ function bindNewPushButton() {
                 success: function (responce) {
                     if (responce.success) {
                         location.reload();
-                    };
+                    }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     alert(errorThrown);
@@ -119,7 +119,7 @@ function bindNewButton() {
                 success: function (responce) {
                     if (responce.success) {
                         location.reload();
-                    };
+                    }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     alert(errorThrown);

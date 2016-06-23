@@ -4,13 +4,28 @@ import Model.Book;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
-import java.util.Set;
 
 /**
  * Created by aldm on 14.06.2016.
  */
 @Component
 class BookResponse {
+
+    private String title;
+    private String authors;
+    private int id;
+    private Date releaseYear;
+
+    BookResponse(Book book) {
+        this.title = book.getTitle();
+        StringBuilder authorsTitles = new StringBuilder();
+        book.getAuthors().forEach(it-> authorsTitles.append(it.getName()).append(", "));
+        this.authors = authorsTitles.delete(authorsTitles.length()-2,authorsTitles.length()-1).toString();
+        this.id = book.getId();
+        this.releaseYear = book.getReleaseYear();
+    }
+
+    BookResponse() {}
 
     public String getTitle() {
         return this.title;
@@ -43,21 +58,5 @@ class BookResponse {
     public void setReleaseYear(Date releaseYear) {
         this.releaseYear = releaseYear;
     }
-
-    private String title;
-    private String authors;
-    private int id;
-    private Date releaseYear;
-
-    BookResponse(Book book) {
-        this.title = book.getTitle();
-        StringBuilder authorsTitles = new StringBuilder();
-        book.getAuthors().forEach(it->authorsTitles.append(it.getName() + ", "));
-        this.authors = authorsTitles.delete(authorsTitles.length()-2,authorsTitles.length()-1).toString();
-        this.id = book.getId();
-        this.releaseYear = book.getReleaseYear();
-    }
-
-    BookResponse() {}
 
 }

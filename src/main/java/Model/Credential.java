@@ -15,6 +15,9 @@ public class Credential {
     private String password;
     private String email;
 
+    public Credential() {
+    }
+
     @GeneratedValue(generator="increment")
     @GenericGenerator(name="increment", strategy = "increment")
     @Id
@@ -50,13 +53,14 @@ public class Credential {
         this.email = email;
     }
 
-    public Credential() {
-    }
-
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Credential)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Credential)) {
+            return false;
+        }
         Credential credential = (Credential) o;
         return getId() == credential.getId();
     }

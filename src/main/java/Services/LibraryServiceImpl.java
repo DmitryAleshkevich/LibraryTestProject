@@ -56,19 +56,18 @@ class LibraryServiceImpl implements LibraryService {
 
     @Override
     public boolean isRegistered(String login, String password) {
-        Credential credential = credentialRepository.findOneByLoginAndPassword(login,password);
-        return (credential != null);
+        final Credential credential = credentialRepository.findOneByLoginAndPassword(login,password);
+        return credential != null;
     }
 
     @Override
-    @Deprecated
     public void login(String login, String password) {
         /* done with Spring Security */
     }
 
     @Override
     public boolean bookExists(String title, String author) {
-        return (!findBook(title, author).isEmpty());
+        return !findBook(title, author).isEmpty();
     }
 
     @Override
@@ -79,8 +78,8 @@ class LibraryServiceImpl implements LibraryService {
         return books;
     }
 
-    public Set<Book> findBook(String title, String author) {
-        Set<Author> authors = authorRepository.findByNameLike(author);
+    private Set<Book> findBook(String title, String author) {
+        final Set<Author> authors = authorRepository.findByNameLike(author);
         if (!authors.isEmpty())
         {
             return bookRepository.findByTitleLikeAndAuthorsIn(title, authors);
@@ -91,8 +90,8 @@ class LibraryServiceImpl implements LibraryService {
 
     @Override
     public void rentBooks(Set<Book> books, Date returnDate, String login, String password) {
-        Credential oneByLoginAndPassword = credentialRepository.findOneByLoginAndPassword(login, password);
-        Card card = cardRepository.findOneByCredential(oneByLoginAndPassword);
+        final Credential credential = credentialRepository.findOneByLoginAndPassword(login, password);
+        final Card card = cardRepository.findOneByCredential(credential);
         final Set<Library> librarySet = libraryRepository.findByBookIn(books);
         if (!librarySet.isEmpty()) {
             libraryRepository.updateBookStoresDateReturn(librarySet, returnDate, card);
@@ -108,10 +107,10 @@ class LibraryServiceImpl implements LibraryService {
 
     @Override
     public Set<Book> getRentedBooks(String login, String password) {
-        Credential credential = credentialRepository.findOneByLoginAndPassword(login,password);
+        final Credential credential = credentialRepository.findOneByLoginAndPassword(login,password);
         if (credential != null)
         {
-            Card card = cardRepository.findOneByCredential(credential);
+            final Card card = cardRepository.findOneByCredential(credential);
             if (card != null)
             {
                 return libraryRepository.findByCard(card).stream().map(Library::getBook).collect(Collectors.toSet());

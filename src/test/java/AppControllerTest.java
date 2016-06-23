@@ -52,7 +52,7 @@ public class AppControllerTest {
 
     private String jsonBook;
 
-    private static final String jsonBookResult = "[{\"id\":1,\"title\":\"myBook\",\"releaseYear\":1461069936812,\"authors\":[{\"id\":1,\"name\":\"Unknown\",\"books\":null}]}]";
+    private static final String jsonBookResult = "[{\"title\":\"myBook\",\"authors\":\"Unknown \",\"id\":4,\"releaseYear\":1461069936812}]";
 
     private static final String jsonRegistration = "{\"email\":\"dmitryaleshkevich@gmail.com\",\"login\":\"aldm\",\"password\":\"fhvfutljy\"}";
 

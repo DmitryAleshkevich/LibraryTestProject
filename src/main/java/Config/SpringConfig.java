@@ -21,16 +21,11 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.async.DeferredResult;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import springfox.documentation.builders.ParameterBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.builders.ResponseMessageBuilder;
-import springfox.documentation.schema.ModelRef;
 import springfox.documentation.schema.WildcardType;
-import springfox.documentation.service.Tag;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
@@ -58,7 +53,10 @@ public class SpringConfig extends WebMvcAutoConfiguration {
     private static final String PROP_DATABASE_USERNAME = "hibernate.connection.username";
     private static final String PROP_ENTITYMANAGER_PACKAGES_TO_SCAN = "Model";
 
-    private org.hibernate.cfg.Configuration configuration = new org.hibernate.cfg.Configuration().configure();
+    private final org.hibernate.cfg.Configuration configuration = new org.hibernate.cfg.Configuration().configure();
+
+    @Autowired
+    private TypeResolver typeResolver;
 
     public static void main(String[] args) {
         SpringApplication.run(SpringConfig.class, args);
@@ -95,9 +93,6 @@ public class SpringConfig extends WebMvcAutoConfiguration {
 
         return transactionManager;
     }
-
-    @Autowired
-    private TypeResolver typeResolver;
 
     @Bean
     public Docket petApi() {

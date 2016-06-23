@@ -24,6 +24,8 @@
         <spring.security.version>4.1.0.RELEASE</spring.security.version>
         <springfox.version>2.5.0</springfox.version>
         <guava.version>19.0</guava.version>
+        <spring.aop.version>4.3.0.RELEASE</spring.aop.version>
+        <aspectj.tools.version>1.8.9</aspectj.tools.version>
     </properties>
 
     <repositories>
@@ -41,6 +43,16 @@
     </parent>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>${spring.aop.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjtools</artifactId>
+            <version>${aspectj.tools.version}</version>
+        </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>

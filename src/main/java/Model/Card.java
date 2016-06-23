@@ -14,6 +14,9 @@ public class Card {
     private int number;
     private Credential credential;
 
+    public Card() {
+    }
+
     @Id
     @GeneratedValue(generator="increment")
     @GenericGenerator(name="increment", strategy = "increment")
@@ -42,13 +45,14 @@ public class Card {
         this.credential = credential;
     }
 
-    public Card() {
-    }
-
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Card)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Card)) {
+            return false;
+        }
         Card card = (Card) o;
         return getId() == card.getId();
     }

@@ -16,6 +16,9 @@ public class Library {
     private Card card;
     private Date returnDate;
 
+    public Library() {
+    }
+
     @Id
     @GeneratedValue(generator="increment")
     @GenericGenerator(name="increment", strategy = "increment")
@@ -54,13 +57,14 @@ public class Library {
         this.returnDate = returnDate;
     }
 
-    public Library() {
-    }
-
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Library)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Library)) {
+            return false;
+        }
         Library library = (Library) o;
         return getId() == library.getId();
     }
