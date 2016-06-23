@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
  */
 @Service
 @Transactional
-class LibraryServiceImpl implements LibraryService {
+public class LibraryServiceImpl implements LibraryService {
 
     private static final Logger logger = LogManager.getLogger(LibraryServiceImpl.class);
 

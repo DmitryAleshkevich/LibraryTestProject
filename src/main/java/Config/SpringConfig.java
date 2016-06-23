@@ -15,6 +15,7 @@ import org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -45,6 +46,7 @@ import static springfox.documentation.schema.AlternateTypeRules.newRule;
 @ComponentScan(basePackageClasses = {LibraryRepository.class, Library.class, LibraryService.class, AppController.class, TestContentProducer.class, SecurityConfig.class, AppInitializer.class})
 @EnableWebMvc
 @EnableSwagger2
+@EnableAspectJAutoProxy
 public class SpringConfig extends WebMvcAutoConfiguration {
 
     private static final String PROP_DATABASE_DRIVER = "hibernate.connection.driver_class";

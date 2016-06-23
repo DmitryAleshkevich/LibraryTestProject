@@ -24,7 +24,7 @@
         <spring.security.version>4.1.0.RELEASE</spring.security.version>
         <springfox.version>2.5.0</springfox.version>
         <guava.version>19.0</guava.version>
-        <spring.aop.version>4.3.0.RELEASE</spring.aop.version>
+        <spring.aop.version>4.2.5.RELEASE</spring.aop.version>
         <aspectj.tools.version>1.8.9</aspectj.tools.version>
     </properties>
 
@@ -46,7 +46,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aop</artifactId>
-            <version>${spring.aop.version}</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.aspectj</groupId>
@@ -163,11 +163,6 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>${slf4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-slf4j-impl</artifactId>
-            <version>${slf4j.adapter.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>

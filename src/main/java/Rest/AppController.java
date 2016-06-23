@@ -39,10 +39,7 @@ public class AppController {
     @RequestMapping(path = "/getbooks",method = RequestMethod.POST)
     public Set<BookResponse> getBooks(@RequestBody Map<String,String> query)
     {
-        /* params logging */
-        query.forEach((k,v) -> logger.info("Request URL: /getbooks ; Request params: Title-" + k + ", Author-" + v));
         final Set<BookResponse> responseSet = libraryService.findBooks(query).stream().map(BookResponse::new).collect(Collectors.toSet());
-        responseSet.forEach(it->logger.info("Responce: Book title-" + it.getTitle()));
         return responseSet;
     }
 

@@ -59,4 +59,13 @@ class BookResponse {
         this.releaseYear = releaseYear;
     }
 
+    @Override
+    public String toString() {
+        return "BookResponse{" +
+                "title='" + title + '\'' +
+                ", authors='" + authors + '\'' +
+                ", id=" + id +
+                ", releaseYear=" + releaseYear +
+                '}';
+    }
 }

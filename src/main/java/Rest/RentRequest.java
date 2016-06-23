@@ -43,4 +43,14 @@ class RentRequest {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    @Override
+    public String toString() {
+        return "RentRequest{" +
+                "books=" + books +
+                ", date=" + date +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }
