@@ -12,6 +12,8 @@
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/DAO/pom.xml" />
+        <option value="$PROJECT_DIR$/library-Services/pom.xml" />
+        <option value="$PROJECT_DIR$/library-model/pom.xml" />
       </set>
     </option>
   </component>
