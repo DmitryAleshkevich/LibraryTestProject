@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Library Test Project</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <!--script src="js/jquery3.js"></script-->
+    <script
+            src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+            crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="js/moment-with-locales.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css" />
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-tab.js"></script>
+    <script src="js/jqueryCookie.js"></script>
+    <script src="js/cookieEditor.js"></script>
+    <script src="js/service.js"></script>
+</head>
+<body>
+<div class="row">
+    <div class="col-md-12">
+        <img src="/images/lib.jpg" class="img-responsive">
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-1">
+        <h5 class="text-justify user" id="greeting"></h5>
+        <p class="text-justify">Press logout to leave the page...</p>
+        <form role="form" action='/logout'>
+            <button type="submit" class="btn btn-success pull-center" id="logout">Log out</button>
+        </form>
+    </div>
+    <div class="col-md-11">
+        <div>
+            <ul class="nav nav-tabs" data-tabs="tabs">
+                <li class="active"><a href="#mybooks" data-toggle="tab">My Books</a></li>
+                <li><a href="#searchbooks" data-toggle="tab">Search Books</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="mybooks">
+                </div>
+                <div class="tab-pane" id="searchbooks">
+                    <div class="input-group col-md-5">
+                        <span class="input-group-addon" id="basic-addon1">Author</span>
+                        <input type="text" class="form-control" id="author" aria-describedby="basic-addon1">
+                        <span class="input-group-addon" id="basic-addon2">Book</span>
+                        <input type="text" class="form-control" id="book" aria-describedby="basic-addon2">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-primary" id="searchBook">Search</button>
+                        </span>
+                    </div>
+                    <div id="searchContent"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12"></div>
+</div>
+<script>$('#greeting').text('Hello, ' + $.cookie('login'));</script>
+<script>$('#mybooks').text(getMyBooks())</script>
+</body>
+</html>
